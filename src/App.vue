@@ -3,11 +3,18 @@ import Menu from "@/components/Menu/Menu.vue";
 </script>
 
 <template>
-  <div>
+  <main>
     <Menu />
-    <div>App</div>
-    <router-view></router-view>
-  </div>
+    <section class="container">
+      <router-view></router-view>
+    </section>
+  </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+  margin: auto;
+  padding: 4rem 2rem;
+  max-width: 64rem;
+}
+</style>

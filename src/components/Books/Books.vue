@@ -17,7 +17,7 @@ const dataSet: DataSetItem[] = listBooks.map((book: Book): DataSetItem => {
 </script>
 
 <template>
-  <div>Books</div>
+  <h1>Book ratings</h1>
   <Search v-model="query" :data-set="dataSet" /> {{ query }}
 </template>
 
