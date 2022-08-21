@@ -55,10 +55,10 @@ const currentRoute = computed(() => useRoute().path);
       background-color: #eee;
       border-color: #2c99ed;
 
-      ::v-deep .link__text {
+      :deep(.link__text) {
         color: #111;
       }
-      ::v-deep svg {
+      :deep(svg) {
         color: #111;
       }
     }
@@ -84,14 +84,14 @@ const currentRoute = computed(() => useRoute().path);
       background-color: #eee;
     }
 
-    ::v-deep .link__text {
+    :deep(.link__text) {
       display: flex;
       gap: 0.75rem;
       align-items: center;
       font-weight: 450;
       color: #111;
     }
-    ::v-deep svg {
+    :deep(svg) {
       width: 1.25rem;
       height: 1.25rem;
       opacity: 0.75;

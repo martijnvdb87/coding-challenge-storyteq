@@ -76,12 +76,69 @@ const dataSet: DataSetItem[] = listCities.map((city: City): DataSetItem => {
   <div v-if="isLoading">
     <Loader />
   </div>
-  <div v-else-if="currentWeatherInformation">
-    <h2>{{ currentWeatherInformation.region }}</h2>
-    <div>{{ currentWeatherInformation.description }}</div>
-    <img :src="currentWeatherInformation.icon" />
-    <div>{{ currentWeatherInformation.temperature }} °C</div>
+  <div class="weather-information" v-else-if="currentWeatherInformation">
+    <div class="weather-information__graphic">
+      <img
+        class="weather-information__icon"
+        :src="currentWeatherInformation.icon"
+      />
+      <div class="weather-information__temperature">
+        <div class="weather-information__temperature-value">
+          {{ currentWeatherInformation.temperature }}
+        </div>
+        <div class="weather-information__temperature-unit">°C</div>
+      </div>
+    </div>
+    <div class="weather-information__location">
+      <h2 class="weather-information__region">
+        {{ currentWeatherInformation.region }}
+      </h2>
+      <div class="weather-information__description">
+        {{ currentWeatherInformation.description }}
+      </div>
+    </div>
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.weather-information {
+  margin: auto;
+  padding: 5rem 0;
+  display: flex;
+  color: #111;
+  gap: 1.5rem;
+  justify-content: center;
+
+  &__graphic {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__temperature {
+    display: flex;
+
+    &-value {
+      font-size: 2.65rem;
+      font-weight: 500;
+    }
+    &-unit {
+      font-weight: 300;
+      color: #666;
+      padding-top: 0.5rem;
+    }
+  }
+
+  &__description {
+    font-weight: 300;
+    color: #666;
+  }
+
+  &__region {
+  }
+}
+</style>

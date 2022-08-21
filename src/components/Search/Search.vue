@@ -267,7 +267,7 @@ const blur = (): void => {
       text-decoration: none;
       color: #111;
 
-      ::v-deep .link__text {
+      :deep(.link__text) {
         display: flex;
         gap: 1rem;
         align-items: center;
