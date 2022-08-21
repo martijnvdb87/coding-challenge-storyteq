@@ -3,7 +3,6 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 import Link from "@/components/Link/Link.vue";
 
-import homeIcon from "@/assets/icons/home.svg?raw";
 import bookIcon from "@/assets/icons/book.svg?raw";
 import sunIcon from "@/assets/icons/sun.svg?raw";
 
@@ -20,18 +19,8 @@ const currentRoute = computed(() => useRoute().path);
           currentRoute === '/' ? 'menu__item--active' : '',
         ]"
       >
-        <span class="menu__item-icon" v-html="homeIcon"></span>
-        Home
-      </Link>
-      <Link
-        href="/books"
-        :class="[
-          'menu__item',
-          currentRoute === '/books' ? 'menu__item--active' : '',
-        ]"
-      >
         <span class="menu__item-icon" v-html="bookIcon"></span>
-        Book ratings
+        Alternative book titles
       </Link>
       <Link
         href="/cities"
@@ -41,7 +30,7 @@ const currentRoute = computed(() => useRoute().path);
         ]"
       >
         <span class="menu__item-icon" v-html="sunIcon"></span>
-        Local weather
+        City weather
       </Link>
     </div>
   </div>

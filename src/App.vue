@@ -3,12 +3,10 @@ import Menu from "@/components/Menu/Menu.vue";
 </script>
 
 <template>
-  <main>
-    <Menu />
-    <section class="container">
-      <router-view></router-view>
-    </section>
-  </main>
+  <Menu />
+  <section class="container">
+    <router-view></router-view>
+  </section>
 </template>
 
 <style scoped lang="scss">

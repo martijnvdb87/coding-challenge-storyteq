@@ -18,9 +18,11 @@ const props = withDefaults(
   defineProps<{
     modelValue: string;
     dataSet: DataSetItem[];
+    placeholder?: string;
   }>(),
   {
     modelValue: "",
+    placeholder: "",
   }
 );
 
@@ -33,18 +35,18 @@ const hasSearchFocus = ref(false);
 
 const input = (e: Event): void => {
   const value = (e.target as HTMLInputElement).value;
-  filterResults(value);
+  searchResults.value = filterResults(value);
   hasSearchFocus.value = true;
 };
 
-const filterResults = (value: string): void => {
+const filterResults = (value: string): DataSetItem[] => {
   latestInput.value = value;
   emit("update:modelValue", value);
   selectedIndex.value = 0;
 
   if (value.length >= 3) {
     const query = cleanupQuery(value);
-    searchResults.value = props.dataSet
+    return props.dataSet
       .filter((item: DataSetItem) => {
         return cleanupQuery(item.key).startsWith(query);
       })
@@ -59,9 +61,9 @@ const filterResults = (value: string): void => {
           })(),
         };
       });
-  } else {
-    searchResults.value = [];
   }
+
+  return [];
 };
 
 const cleanupQuery = (value: string): string => {
@@ -105,7 +107,7 @@ const focus = (): void => {
 const click = (searchResult: DataSetItem): void => {
   searchResult.action();
   hasSearchFocus.value = false;
-  filterResults(searchResult.key);
+  searchResults.value = filterResults(searchResult.key);
   searchInput.value.blur();
 };
 
@@ -145,6 +147,7 @@ const blur = (): void => {
           @focus="focus"
           autocomplete="off"
           spellcheck="false"
+          :placeholder="placeholder"
         />
       </div>
       <ol class="results-list" ref="resultsList">

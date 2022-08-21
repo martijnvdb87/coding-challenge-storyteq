@@ -70,8 +70,12 @@ const dataSet: DataSetItem[] = listCities.map((city: City): DataSetItem => {
 </script>
 
 <template>
-  <h1>Weather</h1>
-  <Search v-model="query" :data-set="dataSet" />
+  <h1>City weather</h1>
+  <Search
+    v-model="query"
+    :data-set="dataSet"
+    placeholder="Search city weather"
+  />
 
   <div v-if="isLoading">
     <Loader />
@@ -136,9 +140,6 @@ const dataSet: DataSetItem[] = listCities.map((city: City): DataSetItem => {
   &__description {
     font-weight: 300;
     color: #666;
-  }
-
-  &__region {
   }
 }
 </style>

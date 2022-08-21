@@ -5,6 +5,12 @@ export type Book = {
   author: string;
 };
 
+export type BookTitle = string;
+
+export type BookInformation = {
+  title: string;
+};
+
 const store = ref<Book[]>([
   {
     title: "Don Quixote",
@@ -37,3 +43,15 @@ const store = ref<Book[]>([
 ]);
 
 export const listBooks = store.value;
+
+const bookCache = ref<Map<BookTitle, BookTitle[]>>(new Map());
+
+export const setBooksCache = (
+  book: BookTitle,
+  alternativeBooks: BookTitle[]
+): void => {
+  bookCache.value.set(book, alternativeBooks);
+};
+
+export const getBooksCache = (book: BookTitle): BookTitle[] | undefined =>
+  bookCache.value.get(book);
